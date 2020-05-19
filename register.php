@@ -1,15 +1,5 @@
 <?php
-require_once("smarty/libs/Smarty.class.php");
-$smarty = new Smarty();
-
-//$smarty->template_dir = ‘templates/’;
-//$smarty->compile_dir  = ‘templates_c/’;
-
-
-$smarty->template_dir = './smarty/templates/';
-$smarty->compile_dir = './smarty/templates_c/';
-$smarty->config_dir
-
+require_once("smarty_init.php");
 require_once("db_init.php");
 //エラーメッセージはここに入れていく
 $err=[];
