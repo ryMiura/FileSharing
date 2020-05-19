@@ -45,14 +45,18 @@
                 <small>
                     4文字以上最大16文字まで、半角英数字のみ使用可能です。
                 </small>
+                <p><span class="badge badge-primary">必須</span>Emailアドレス
+                  <input type="text" name = "email" class="form-control mb10 m-2" placeholder="Emailアドレス" autofocus></p>
+
                 <div class = "buttons">
 
                   <button class="btn btn-primary m-3" name = "signup" type="submit">新規登録</button>
                 </div>
 
             </form><!-- /form -->
-
+            <p　class="text-center">登録済みの方は<a href="logon.html">こちら</a></p>
         </div><!-- /card-container -->
+
     </div><!-- /container -->
 
 
@@ -62,3 +66,4 @@
 
   </body>
 </html>
+
