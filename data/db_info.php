@@ -1,7 +1,6 @@
 <?php
-$SERV = "localhost";
-$USER = "root";
-$PASS = "root";
-$DBNM = "db";
-
+define('DB_HOST','localhost');
+define('DB_NAME','db');
+define('DB_USER','root');
+define('DB_PASS','root');
  ?>
