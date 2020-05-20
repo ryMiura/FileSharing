@@ -11,33 +11,20 @@ if(isset($_SESSION['us']) && $_SESSION['us'] != null){
 
  try{
 
-$count=0;
    $ps= $pdo->query("SELECT * FROM `table1`");
-
-$data=[];
+   $personaldata=[];
 
    if($ps->rowCount()>0){
      while($r=$ps->fetch()){
-
-       $data[]=array(
+       $personaldata[]=array(
          $r['filename'],$r['date'],$r['size']
        );
-
-
      }
-
-     $smarty->assign('personaldata', $data);
-
-    
+     $smarty->assign('personaldata', $personaldata);
    }
-
-
  }catch(Exception $e){
-
    echo "エラーが発生しました。";
-
  }
-
 //ログインされていない状態だったら
 }else{
  $smarty->assign("upload_disp",'');
