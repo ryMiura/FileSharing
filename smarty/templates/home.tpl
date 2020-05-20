@@ -56,8 +56,8 @@
    <ul class="list-group list-group-horizontal">
      <li class="list-group-item col-5">
        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="check1a">
-          <label class="form-check-label" for="check1a">{$var[0]}</label>
+          <input class="form-check-input" type="checkbox" id="check{$smarty.foreach.loop.index}">
+          <label class="form-check-label" for="check{$smarty.foreach.loop.index}">{$var[0]}</label>
       </div></li>
      <li class="list-group-item col-2">{$var[2]}</li>
      <li class="list-group-item col-3">{$var[1]}</li>
