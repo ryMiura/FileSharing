@@ -38,26 +38,34 @@
             <form class="form-signin mb10" action="logon2.php" method="POST">
                 <p>
                   <label for="username">ユーザー名</label>
-                  <input type="text" name = "u" class="form-control mb10" placeholder="ユーザーID"  autofocus>
+                  <input type="text" name = "u" class="form-control mb10" placeholder="ユーザーID"  required autofocus>
                 </p>
                 <small>最大16文字、半角英数字のみ使用可能です。</small>
                 <p>
                   <label for="password">パスワード</label>
-                  <input type="password" name = "p" class="form-control" placeholder="パスワード" >
+                  <input type="password" name = "p" class="form-control" placeholder="パスワード" required>
                 </p>
                 <small>最大8文字、半角英数字のみ使用可能です。</small>
                 <p>
                   <label for="email">メールアドレス</label>
-                  <input type="text" name = "email" class="form-control mb10" placeholder="メールアドレス"  autofocus>
+                  <input type="text" name = "email" class="form-control mb10" placeholder="メールアドレス" required autofocus>
                 </p>
                 <div class="row">
-                  <button class="btn btn-primary col-5 m-3" type="submit">ログイン</button>
-                  <button class="btn btn-primary col-5 m-3" name = "signup" type="submit">新規登録</button>
+                  <button class="btn btn-primary  m-3" type="submit">ログイン</button>
+                  <FORM　class="form-signin　col-5 m-3 " action="signup.php" method="POST">
+                    <button type="button" class="btn btn-primary mt-3  "onclick="location.href='signup.php'">新規登録</button>
+                  </FORM>
+
+
                 </div>
 
             </form><!-- /form -->
 
+
+
         </div><!-- /card-container -->
+
+
     </div><!-- /container -->
 
 
