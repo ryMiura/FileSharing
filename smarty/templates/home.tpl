@@ -5,6 +5,8 @@
     <title>ファイルアップローダ</title>
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
     {if $upload_disp}
@@ -39,34 +41,46 @@
           <div class="m-3">
             <h5>アップロードしたファイル</h5>
           </div>
+          <!-- ダウンロード　削除　ボタン -->
+          <div class="btn_wrapper">
+             <!-- <form　class="form-signin col-3" action="download.php" method="POST"> -->
+            <!-- </from> -->
+            <!-- <form　class="form-signin col-3" action="delete.php" method="POST"> -->
+            <form class="form-signin col-3" action="download.php" method="post">
+              <div class="row">
+                <button type="submit" class="dl-bt btn btn-warning m-1 "name="dl">ダウンロード</button>
+                <button type="submit" class="del-btn btn btn-danger m-1 " name="del">削除</button>
+              </div>
 
-
+            <!--  -->
+          </div>
 
         <div class="filedate-list">
           <ul class="list-group list-group-horizontal">
 
-            <li class="list-group-item active col-5">ファイル名</li>
+            <li class="list-group-item active col-4">ファイル名</li>
             <li class="list-group-item active col-2">容量</li>
             <li class="list-group-item active col-3">更新日時</li>
           </ul>
 
-<!-- 繰り返し処理 -->
- {foreach from=$personaldata item=var}
 
+
+<!-- 繰り返し処理 -->
+ {foreach name=loop from=$personaldata item=var}
    <ul class="list-group list-group-horizontal">
-     <li class="list-group-item col-5">
+     <li class="list-group-item col-4">
        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="check{$smarty.foreach.loop.index}">
-          <label class="form-check-label" for="check{$smarty.foreach.loop.index}">{$var[0]}</label>
+          <input class="form-check-input" name="check[]" type="checkbox" value="{$var[3]}" id="c{$var[3]}">
+          <label class="form-check-label" for="check1a">{$var[0]}</label>
       </div></li>
      <li class="list-group-item col-2">{$var[2]}</li>
      <li class="list-group-item col-3">{$var[1]}</li>
+    
    </ul>
-
-
-
  {/foreach}
+<p>{$navi}</p>
 
+</form>
 
 
 
@@ -76,6 +90,13 @@
     {else}
       <a href = 'logon.html'>ログインして下さい</a>
     {/if}
+    <script type="text/javascript">
+    function getId(ele){
+        var id_value = ele.id; // eleのプロパティとしてidを取得
+        console.log(id_value); //「id01」
+    }
+    </script>
+    <script type="text/javascript" src="./JQuery/JQuery.js"></script>
 
 </div>
 </body>
