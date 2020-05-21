@@ -82,10 +82,6 @@
 
 </form>
 
-
-
-
-
     </div>
     {else}
       <a href = 'logon.html'>ログインして下さい</a>
