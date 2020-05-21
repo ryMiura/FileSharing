@@ -24,14 +24,19 @@ if(isset($_SESSION['us']) && $_SESSION['us'] != null){
        );
      }
      $smarty->assign('personaldata', $personaldata);
+     $cnt = count($personaldata);
+
    }
+
    $options = array(
      //トータルアイテム数
-     "totalItems" => 11,
+     "totalItems" => $cnt,
      //ページリンク数
      "delta" => 5,
      //1ページに表示させるアイテム数
-     "perPage" => 3
+     "perPage" => 3,
+
+     "itemData"=>$personaldata
    );
 
    $pager =& Pager::factory($options);
@@ -42,14 +47,23 @@ if(isset($_SESSION['us']) && $_SESSION['us'] != null){
    $currentPageID = $pager -> getCurrentPageID();
    $index = ($currentPageID - 1) * 3 + 1;
 
-  print("<p>");
+   $smarty->assign("index",$index);
+   $smarty->assign("cnt",$cnt);
+
+
   for($i = $index; $i < $index + 3 ; $i++){
     if ($i <= 11){
-      print($i);
-      print(" ");
+      print <<<eot
+      <ul>
+        <li>{$personaldata[$i-1][0]}</li>
+        <li >{$personaldata[$i-1][1]}</li>
+        <li >{$personaldata[$i-1][2]}</li>
+      </ul>
+      eot;
+      $smarty->assign("i",$personaldata[$i]);
     }
   }
-  print("</p>");
+
   print("現在のページ番号は".$currentPageID);
 
 
