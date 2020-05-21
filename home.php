@@ -32,9 +32,9 @@ if(isset($_SESSION['us']) && $_SESSION['us'] != null){
      //トータルアイテム数
      "totalItems" => $cnt,
      //ページリンク数
-     "delta" => 5,
+     //"delta" => 5,
      //1ページに表示させるアイテム数
-     "perPage" => 3,
+     "perPage" => 7,
 
      "itemData"=>$personaldata
    );
@@ -45,14 +45,14 @@ if(isset($_SESSION['us']) && $_SESSION['us'] != null){
 
 
    $currentPageID = $pager -> getCurrentPageID();
-   $index = ($currentPageID - 1) * 3 + 1;
+   $index = ($currentPageID - 1) * 7 + 1;
 
    $smarty->assign("index",$index);
    $smarty->assign("cnt",$cnt);
 
 
-  for($i = $index; $i < $index + 3 ; $i++){
-    if ($i <= 11){
+  for($i = $index; $i < $index + 7 ; $i++){
+    if ($i <= $cnt){
       print <<<eot
       <ul>
         <li>{$personaldata[$i-1][0]}</li>
