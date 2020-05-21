@@ -53,6 +53,7 @@
               </div>
 
             <!--  -->
+            <p>現在のページ：{$page}</p>
           </div>
 
         <div class="filedate-list">
@@ -65,22 +66,34 @@
 
 
 
+
 <!-- 繰り返し処理 -->
- {foreach name=loop from=$personaldata item=var}
-   <ul class="list-group list-group-horizontal">
-     <li class="list-group-item col-4">
-       <div class="form-check">
-          <input class="form-check-input" name="check[]" type="checkbox" value="{$var[3]}" id="c{$var[3]}">
-          <label class="form-check-label" for="check1a">{$var[0]}</label>
-      </div></li>
-     <li class="list-group-item col-2">{$var[2]}</li>
-     <li class="list-group-item col-3">{$var[1]}</li>
-    
-   </ul>
- {/foreach}
+
+ {for $foo={$index} to {$index+7}}
+ {if $foo<{$cnt}+1}
+ <ul class="list-group list-group-horizontal">
+   <li class="list-group-item col-4">
+     <div class="form-check">
+        <input class="form-check-input" name="check[]" type="checkbox" value="{$var[3]}" id="c{$var[3]}">
+        <label class="form-check-label" for="check1a">{$data[$foo-1][0]}</label>
+    </div></li>
+
+   <li class="list-group-item col-2">{$data[$foo-1][1]}</li>
+
+   <li class="list-group-item col-3">{$data[$foo-1][2]}</li>
+
+ </ul>
+{/if}
+
+ {/for}
+
 <p>{$navi}</p>
 
 </form>
+
+
+
+
 
     </div>
     {else}
