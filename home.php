@@ -49,22 +49,9 @@ if(isset($_SESSION['us']) && $_SESSION['us'] != null){
 
    $smarty->assign("index",$index);
    $smarty->assign("cnt",$cnt);
-
-
-  for($i = $index; $i < $index + 7 ; $i++){
-    if ($i <= $cnt){
-      print <<<eot
-      <ul>
-        <li>{$personaldata[$i-1][0]}</li>
-        <li >{$personaldata[$i-1][1]}</li>
-        <li >{$personaldata[$i-1][2]}</li>
-      </ul>
-      eot;
-      $smarty->assign("i",$personaldata[$i]);
-    }
-  }
-
-  print("現在のページ番号は".$currentPageID);
+   $smarty->assign("index",$index);
+   $smarty->assign("data",$personaldata);
+   $smarty->assign("page",$currentPageID);
 
 
  }catch(Exception $e){
