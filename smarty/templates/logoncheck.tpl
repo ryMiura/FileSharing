@@ -6,10 +6,12 @@
   </head>
   <body>
     {if $e}
-    <p>{$e}<br>
-    <a href="logon.html">ログイン</a></p>
+    <script type="text/javascript">
+      alert("{$e}");
+      window.location="logon.html";
+    </script>
     {else}
-    
+
     {/if}
   </body>
 </html>

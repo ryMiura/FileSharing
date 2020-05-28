@@ -19,14 +19,22 @@
         margin: 0 auto 0px;
       }
 
+      .errordipper{
+        background-color: #FFFFFF;
+      }
+
+      .errordipper p{
+        color: red;
+      }
 
 	</style>
 
   <body>
-    <h5><span class="bg-light">新規登録</span></h5>
+
     <div class="container">
 
-      <h2 class="text-center my-5">新規会員登録</h2>
+
+      <h2 class="text-center mt-5">新規会員登録</h2>
       <div class="card-header bg-warning">
          IDとパスワードを入力の上「新規登録」ボタンをクリックしてください
      </div>
@@ -35,26 +43,43 @@
          <p id="profile-name" class="profile-name-card"></p>
 
             <form class="form-signin mb10" action="register.php" method="POST">
-                <p><span class="badge badge-primary">必須</span>ユーザー名
-                  <input type="text" name = "u" class="form-control mb10 m-2" placeholder="ユーザーID" autofocus></p>
-                <small>
-                    最大16文字、半角英数字のみ使用可能です。
-                </small>
-                <p><span class="badge badge-primary">必須</span>パスワード
-                  <input type="password" name = "p" class="form-control m-2" placeholder="パスワード" ></p>
-                <small>
-                    4文字以上最大16文字まで、半角英数字のみ使用可能です。
-                </small>
-                <p><span class="badge badge-primary">必須</span>Emailアドレス
-                  <input type="text" name = "email" class="form-control mb10 m-2" placeholder="Emailアドレス" autofocus></p>
 
+
+
+                  <p>
+                    <label for="username"><span class="badge badge-primary">必須</span>ユーザー名</label>
+                    <input type="text" name = "u" class="form-control mb10" placeholder="ユーザーID"  required autofocus>
+                  </p>
+                  <small>最大16文字、半角英数字のみ使用可能です。</small>
+                  <p>
+                    <label for="password"><span class="badge badge-primary">必須</span>パスワード</label>
+                    <input type="password" name = "p" class="form-control" placeholder="パスワード" required>
+                  </p>
+                  <small>最大8文字、半角英数字のみ使用可能です。</small>
+                  <p>
+                    <label for="email"><span class="badge badge-primary">必須</span>メールアドレス</label>
+                    <input type="text" name = "email" class="form-control mb10" placeholder="メールアドレス" required autofocus>
+                  </p>
                 <div class = "buttons">
 
                   <button class="btn btn-primary m-3" name = "signup" type="submit">新規登録</button>
+                  <button type="button" class="btn btn-info ml-3 "onclick="location.href='logon.html'">ログイン画面に戻る</button>
                 </div>
 
             </form><!-- /form -->
-            <p　class="text-center">登録済みの方は<a href="logon.html">こちら</a></p>
+
+            {if  $err}
+            <div class="errordipper">
+
+
+              <p　class="bg-info">登録できませんでした。以下の点を確認して下さい。</p>
+              {foreach from=$err item=er }
+                <p>{$er}</p>
+              {/foreach}
+            </div>
+            {/if}
+
+
         </div><!-- /card-container -->
 
     </div><!-- /container -->
@@ -66,4 +91,3 @@
 
   </body>
 </html>
-
