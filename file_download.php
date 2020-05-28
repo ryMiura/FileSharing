@@ -1,6 +1,9 @@
 <?php
 function download($pPath, $pMimeType = null)
 {
+
+  session_start();
+
    //-- ファイルが読めない時はエラー(もっときちんと書いた方が良いが今回は割愛)
    if (!is_readable($pPath)) { die($pPath); }
 
@@ -14,7 +17,7 @@ function download($pPath, $pMimeType = null)
    }
 
    //-- Content-Type
-   header('Content-Type: ' . $mimeType);
+   header('Content-Type:  . $mimeType;charset=UTF-8');
 
    //-- ウェブブラウザが独自にMIMEタイプを判断する処理を抑止する
    header('X-Content-Type-Options: nosniff');
@@ -22,8 +25,10 @@ function download($pPath, $pMimeType = null)
    //-- ダウンロードファイルのサイズ
    header('Content-Length: ' . filesize($pPath));
 
+   //--ファイル名はUTFー8に変換する
+   $pname = mb_convert_encoding(basename($pPath), "UTF-8", "JIS");
    //-- ダウンロード時のファイル名
-   header('Content-Disposition: attachment; filename="' . basename($pPath) . '"');
+   header('Content-Disposition: attachment; filename="' . $pname . '"');
 
    //-- keep-aliveを無効にする
    header('Connection: close');
