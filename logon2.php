@@ -14,28 +14,29 @@ $pass = isset($_POST['p'])?htmlspecialchars($_POST['p'],ENT_QUOTES):null;
 $email = isset($_POST['email'])?htmlspecialchars($_POST['email'],ENT_QUOTES):null;
 
 //ログインテーブルからIDパスワードをチェック
-$ps= $pdo->query("SELECT * FROM `logintable` WHERE `user` = '$user'");
+$ps= $pdo->query("SELECT * FROM `logintable` WHERE `email` = '$email'");
 if($ps->rowCount()>0){
   $r=$ps->fetch();
 
-  if(($r['pass'] === md5($pass)) && ($r['email'] == $email)){
+  if(($r['pass'] === md5($pass)) && ($r['user'] == $user)){
     $_SESSION['us'] = $user;
+    $_SESSION['usid']=$r['id'];
     $smarty->assign("e",'');
+
     //header('Location:home.php');
 ?>
-/
+
 <script>
   window.location.href = 'home.php';
 </script>
 <?php
     }else{
     session_destroy();
-    $smarty->assign("e",'入力されていない項目があります');
+    $smarty->assign("e",'入力情報が間違っています');
     }
   }else{
     session_destroy();
-    $smarty->assign("e",'登録がみつかりません');
+    $smarty->assign("e",'ユーザーが登録されていません');
   }
 $smarty->display("logoncheck.tpl");
  ?>
-
