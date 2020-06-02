@@ -4,10 +4,10 @@ function download($pPath, $pMimeType = null)
 
   session_start();
 
-   //-- ファイルが読めない時はエラー(もっときちんと書いた方が良いが今回は割愛)
+   //-- ファイルが読めない時はエラー
    if (!is_readable($pPath)) { die($pPath); }
 
-   //-- Content-Typeとして送信するMIMEタイプ(第2引数を渡さない場合は自動判定) ※詳細は後述
+   //-- Content-Typeとして送信するMIMEタイプ
    $mimeType = (isset($pMimeType)) ? $pMimeType
                                    : (new finfo(FILEINFO_MIME_TYPE))->file($pPath);
 
